@@ -69,6 +69,47 @@ mkdir -p ~/.kube
 # scp user@server:~/.kube/config ~/.kube/config
 ```
 
+## Secrets Management (SOPS + age)
+
+Sensible Daten (kubeconfig, SSH keys, .env files) sind mit SOPS verschlüsselt.
+
+### Voraussetzung: Age Key
+
+Der private Schlüssel muss vorhanden sein in `~/.config/sops/age/keys.txt`.
+Diesen Key aus dem Password Manager holen!
+
+```bash
+mkdir -p ~/.config/sops/age
+# Key aus Password Manager in keys.txt einfügen
+```
+
+### Secrets manuell wiederherstellen
+
+```bash
+# Kubeconfig
+sops -d secrets/kubeconfig.yaml > ~/.kube/config
+
+# SSH Keys
+./install/secrets.sh
+
+# .env Dateien
+./install/restore-envs.sh
+```
+
+### Test ob alles funktioniert
+
+```bash
+./test-restore.sh
+```
+
+## Ubuntu/Linux Setup
+
+Auf Ubuntu müssen SOPS und age manuell installiert werden:
+
+```bash
+./install/ubuntu-deps.sh
+```
+
 ## Syncthing (Optional)
 
 Für Sync von `Active_Projects` zwischen Maschinen:
@@ -77,3 +118,5 @@ brew install syncthing
 brew services start syncthing
 # Dann http://localhost:8384 öffnen
 ```
+
+Syncthing läuft auch auf dem K8s Cluster: https://sync.sascha-kohler.at
