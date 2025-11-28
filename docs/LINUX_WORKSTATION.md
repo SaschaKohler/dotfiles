@@ -10,18 +10,84 @@ Alles andere (SSH Keys, Kubeconfig, .env Dateien) wird daraus wiederhergestellt.
 
 ---
 
-## Option 1: Docker Container (zum Testen)
+## Option 1: Windsurf Dev Container (empfohlen)
 
-### Auf deinem Mac (mit lokalen Projekten)
+Die einfachste Methode - Windsurf öffnet sich direkt im Container.
+
+### Voraussetzung
+- Docker Desktop muss laufen
+- "Dev Containers" Extension in Windsurf installiert
+
+### Starten
+
+1. Öffne das dotfiles Verzeichnis in Windsurf
+2. `Cmd+Shift+P` → **"Dev Containers: Reopen in Container"**
+3. Windsurf baut das Image und führt das Setup automatisch aus
+
+Das wars! Du arbeitest jetzt im Container mit allen Tools.
+
+### Bei Problemen: Rebuild
+
+```
+Cmd+Shift+P → "Dev Containers: Rebuild and Reopen in Container"
+```
+
+---
+
+## Option 2: Manueller Docker Container + Windsurf Attach
+
+Falls du mehr Kontrolle brauchst:
+
+### Container starten (mit curl vorinstalliert für Windsurf)
+
+```bash
+docker run -d --name devbox \
+  -v ~/dev/dotfiles:/dotfiles \
+  -v ~/.config/sops/age:/root/.config/sops/age \
+  -v ~/Documents/01_Development/Active_Projects:/projects \
+  -p 3000:3000 -p 5173:5173 -p 8080:8080 \
+  ubuntu:22.04 bash -c "apt update && apt install -y curl wget git && sleep infinity"
+```
+
+### Windsurf attachen
+
+1. `Cmd+Shift+P` → **"Dev Containers: Attach to Running Container"**
+2. Container `devbox` auswählen
+3. Neues Windsurf-Fenster öffnet sich im Container
+
+### Setup im Container (Terminal in Windsurf)
+
+```bash
+cd /dotfiles
+./install/ubuntu-deps.sh
+./install/ubuntu-full.sh
+```
+
+### Container Management
+
+```bash
+# Container stoppen
+docker stop devbox
+
+# Container wieder starten
+docker start devbox
+
+# Container löschen
+docker rm devbox
+```
+
+---
+
+## Option 3: Docker Container (Terminal only)
+
+Ohne Windsurf, nur im Terminal:
 
 ```bash
 docker run -it --rm \
   -v ~/dev/dotfiles:/dotfiles \
   -v ~/.config/sops/age:/root/.config/sops/age \
   -v ~/Documents/01_Development/Active_Projects:/projects \
-  -p 3000:3000 \
-  -p 5173:5173 \
-  -p 8080:8080 \
+  -p 3000:3000 -p 5173:5173 -p 8080:8080 \
   ubuntu:22.04 bash
 ```
 
@@ -45,7 +111,7 @@ Browser öffnen: `http://localhost:5173`
 
 ---
 
-## Option 2: Neuer Linux Rechner / VM
+## Option 4: Neuer Linux Rechner / VM
 
 ### 1. Dotfiles klonen
 
