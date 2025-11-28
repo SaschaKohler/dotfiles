@@ -74,6 +74,14 @@ $SUDO apt install -y nodejs
 echo "  ✓ Node $(node --version)"
 
 # ============================================
+# tmuxinator (Ruby gem)
+# ============================================
+echo "📋 Installing tmuxinator..."
+$SUDO apt install -y ruby
+$SUDO gem install tmuxinator
+echo "  ✓ tmuxinator $(tmuxinator version)"
+
+# ============================================
 # Symlinks for fd and bat (Ubuntu names them differently)
 # ============================================
 $SUDO ln -sf /usr/bin/fdfind /usr/local/bin/fd 2>/dev/null || true
@@ -94,6 +102,12 @@ if [ -d "$DOTFILES_DIR/config" ]; then
     # Tmux
     ln -sf "$DOTFILES_DIR/config/tmux.conf" ~/.tmux.conf
     echo "  ✓ tmux config"
+    
+    # Tmuxinator
+    if [ -d "$DOTFILES_DIR/config/tmuxinator" ]; then
+        ln -sf "$DOTFILES_DIR/config/tmuxinator" ~/.config/tmuxinator
+        echo "  ✓ tmuxinator config"
+    fi
     
     # Git
     ln -sf "$DOTFILES_DIR/config/gitconfig" ~/.gitconfig
@@ -121,9 +135,10 @@ echo "║              ✅ Linux workstation ready!                    ║"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 echo "Installed:"
-echo "  - neovim (LazyVim config linked)"
+echo "  - neovim 0.11.2 (LazyVim config linked)"
 echo "  - kubectl + k9s"
-echo "  - tmux, lazygit, fzf, ripgrep"
+echo "  - tmux + tmuxinator"
+echo "  - lazygit, fzf, ripgrep"
 echo ""
 echo "Try:"
 echo "  nvim              # LazyVim"
