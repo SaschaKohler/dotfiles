@@ -11,3 +11,11 @@ creation_rules:
   
   - path_regex: secrets/.*\.env$
     age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626
+  
+  # SSH Keys und andere Binärdateien
+  - path_regex: secrets/ssh/.*
+    age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626
+  
+  # Catch-all für secrets/
+  - path_regex: secrets/.*
+    age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626

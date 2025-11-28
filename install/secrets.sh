@@ -21,5 +21,29 @@ if [ -f "$SECRETS_DIR/kubeconfig.yaml" ]; then
     echo "  ✓ kubeconfig restored"
 fi
 
+# SSH Keys
+if [ -f "$SECRETS_DIR/ssh-keys.yaml" ]; then
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+    
+    # Extract each key from YAML
+    sops -d --extract '["id_ed25519"]' "$SECRETS_DIR/ssh-keys.yaml" > ~/.ssh/id_ed25519
+    chmod 600 ~/.ssh/id_ed25519
+    
+    sops -d --extract '["id_ed25519_pub"]' "$SECRETS_DIR/ssh-keys.yaml" > ~/.ssh/id_ed25519.pub
+    chmod 644 ~/.ssh/id_ed25519.pub
+    
+    sops -d --extract '["id_rsa"]' "$SECRETS_DIR/ssh-keys.yaml" > ~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
+    
+    sops -d --extract '["id_rsa_pub"]' "$SECRETS_DIR/ssh-keys.yaml" > ~/.ssh/id_rsa.pub
+    chmod 644 ~/.ssh/id_rsa.pub
+    
+    sops -d --extract '["ssh_config"]' "$SECRETS_DIR/ssh-keys.yaml" > ~/.ssh/config
+    chmod 600 ~/.ssh/config
+    
+    echo "  ✓ SSH keys restored"
+fi
+
 echo ""
 echo "✅ Secrets restored!"
