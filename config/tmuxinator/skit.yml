@@ -1,0 +1,16 @@
+# /Users/saschakohler/.config/tmuxinator/skit.yml
+
+name: skit
+root: ~/Documents/01_Development/Active_Projects/skit-website
+
+windows:
+  - editor:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - nvim
+        - git status
+  - lazy:
+  - ssh:

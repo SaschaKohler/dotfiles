@@ -1,0 +1,6 @@
+name: klare-app
+root: /Users/saschakohler/Documents/01_Development/Active_Projects/klare-methode-app
+windows:
+  - editor: nvim
+  - server:
+  - config:

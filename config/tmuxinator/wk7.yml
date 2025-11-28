@@ -1,0 +1,16 @@
+# /Users/saschakohler/.config/tmuxinator/wk7.yml
+
+name: wk7
+root: ~/Documents/01_Development/Active_Projects/wine-k7/wine-k7-wordpress/
+
+windows:
+  - editor:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - nvim .
+        -
+  - k9s: k9s
+  - ddev: ddev start
