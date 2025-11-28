@@ -1,0 +1,13 @@
+# SOPS Configuration
+# Secrets werden mit age verschlüsselt und können sicher in Git committed werden
+
+creation_rules:
+  # Alle Dateien in secrets/ werden mit diesem Key verschlüsselt
+  - path_regex: secrets/.*\.yaml$
+    age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626
+  
+  - path_regex: secrets/.*\.json$
+    age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626
+  
+  - path_regex: secrets/.*\.env$
+    age: age1ynrmvqhkwde3k6x06307elr3xvu2fn5mh2xuzlrp7cxj5lnkms6qtmd626

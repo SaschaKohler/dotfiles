@@ -18,7 +18,7 @@ echo ""
 # ===========================================
 # STEP 1: Homebrew
 # ===========================================
-echo -e "${YELLOW}[1/5] Checking Homebrew...${NC}"
+echo -e "${YELLOW}[1/6] Checking Homebrew...${NC}"
 if ! command -v brew &> /dev/null; then
     echo -e "${GREEN}Installing Homebrew...${NC}"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -36,14 +36,14 @@ fi
 # STEP 2: Install packages from Brewfile
 # ===========================================
 echo ""
-echo -e "${YELLOW}[2/5] Installing packages from Brewfile...${NC}"
+echo -e "${YELLOW}[2/6] Installing packages from Brewfile...${NC}"
 brew bundle install --file="$DOTFILES_DIR/Brewfile" --no-lock
 
 # ===========================================
 # STEP 3: Oh-My-Zsh
 # ===========================================
 echo ""
-echo -e "${YELLOW}[3/5] Setting up Oh-My-Zsh...${NC}"
+echo -e "${YELLOW}[3/6] Setting up Oh-My-Zsh...${NC}"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo -e "${GREEN}Installing Oh-My-Zsh...${NC}"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -69,18 +69,33 @@ echo -e "${GREEN}Oh-My-Zsh ready ✓${NC}"
 # STEP 4: Symlinks
 # ===========================================
 echo ""
-echo -e "${YELLOW}[4/5] Creating symlinks...${NC}"
+echo -e "${YELLOW}[4/6] Creating symlinks...${NC}"
 source "$DOTFILES_DIR/install/symlinks.sh"
 
 # ===========================================
 # STEP 5: Tmux Plugin Manager
 # ===========================================
 echo ""
-echo -e "${YELLOW}[5/5] Setting up Tmux...${NC}"
+echo -e "${YELLOW}[5/6] Setting up Tmux...${NC}"
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 echo -e "${GREEN}Tmux Plugin Manager ready ✓${NC}"
+
+# ===========================================
+# STEP 6: Secrets (optional)
+# ===========================================
+echo ""
+echo -e "${YELLOW}[6/6] Checking secrets...${NC}"
+if [ -f "$HOME/.config/sops/age/keys.txt" ]; then
+    echo -e "${GREEN}Age key found, restoring secrets...${NC}"
+    source "$DOTFILES_DIR/install/secrets.sh"
+else
+    echo -e "${YELLOW}Age key not found - skipping secrets restore${NC}"
+    echo "  To restore secrets later, place your age key at:"
+    echo "  ~/.config/sops/age/keys.txt"
+    echo "  Then run: ./install/secrets.sh"
+fi
 
 # ===========================================
 # FZF Key Bindings
@@ -101,6 +116,6 @@ echo -e "${BLUE}Next steps:${NC}"
 echo "  1. Restart your terminal or run: source ~/.zshrc"
 echo "  2. Open tmux and press: prefix + I (to install plugins)"
 echo "  3. Open nvim - LazyVim will auto-install plugins"
-echo "  4. Setup kubectl config for your cluster"
+echo "  4. If you have the age key, secrets are already restored"
 echo ""
 echo -e "${YELLOW}Time to restore:${NC} ~10-15 minutes ⏱️"
