@@ -23,15 +23,15 @@ $SUDO apt install -y \
     build-essential
 
 # ============================================
-# Neovim (latest from GitHub)
+# Neovim (latest from GitHub - LazyVim needs >= 0.11.2)
 # ============================================
 echo "📝 Installing Neovim..."
-NVIM_VERSION="0.10.2"
-curl -LO "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux64.tar.gz"
-tar -xzf nvim-linux64.tar.gz
-$SUDO mv nvim-linux64 /opt/nvim
+NVIM_VERSION="0.11.2"
+curl -LO "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
+tar -xzf nvim-linux-x86_64.tar.gz
+$SUDO mv nvim-linux-x86_64 /opt/nvim
 $SUDO ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
-rm nvim-linux64.tar.gz
+rm nvim-linux-x86_64.tar.gz
 echo "  ✓ Neovim $(nvim --version | head -1)"
 
 # ============================================
