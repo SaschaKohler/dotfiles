@@ -1,0 +1,18 @@
+{
+  "name": "Dotfiles Dev Container",
+  "image": "ubuntu:22.04",
+  "postCreateCommand": "cd /dotfiles && ./install/ubuntu-deps.sh && ./install/ubuntu-full.sh",
+  "mounts": [
+    "source=${localEnv:HOME}/.config/sops/age,target=/root/.config/sops/age,type=bind",
+    "source=${localEnv:HOME}/Documents/01_Development/Active_Projects,target=/projects,type=bind"
+  ],
+  "forwardPorts": [3000, 5173, 8080],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscodevim.vim"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}

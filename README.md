@@ -104,10 +104,27 @@ sops -d secrets/kubeconfig.yaml > ~/.kube/config
 
 ## Ubuntu/Linux Setup
 
-Auf Ubuntu müssen SOPS und age manuell installiert werden:
+Für eine vollständige Linux-Workstation (oder Docker-Container):
 
 ```bash
-./install/ubuntu-deps.sh
+./install/ubuntu-deps.sh    # SOPS + age
+./install/ubuntu-full.sh    # Neovim, kubectl, k9s, tmux, etc.
+```
+
+📖 **Ausführliche Anleitung:** [docs/LINUX_WORKSTATION.md](docs/LINUX_WORKSTATION.md)
+
+### Docker Quick Start
+
+```bash
+docker run -it --rm \
+  -v ~/dev/dotfiles:/dotfiles \
+  -v ~/.config/sops/age:/root/.config/sops/age \
+  -v ~/Documents/01_Development/Active_Projects:/projects \
+  -p 3000:3000 -p 5173:5173 -p 8080:8080 \
+  ubuntu:22.04 bash
+
+# Im Container:
+cd /dotfiles && ./install/ubuntu-deps.sh && ./install/ubuntu-full.sh
 ```
 
 ## Syncthing (Optional)
