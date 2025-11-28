@@ -1,6 +1,8 @@
 {
   "name": "Dotfiles Dev Container",
-  "image": "ubuntu:22.04",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "postCreateCommand": "cd /dotfiles && ./install/ubuntu-deps.sh && ./install/ubuntu-full.sh",
   "mounts": [
     "source=${localEnv:HOME}/.config/sops/age,target=/root/.config/sops/age,type=bind",
