@@ -1,7 +1,7 @@
 # /Users/saschakohler/.config/tmuxinator/ja-code.yml
 
 name: ja-code
-root: ~/Documents/01_Development/Active_Projects/ja-code/
+root: ~/Documents/01_Development/Active_Projects/ja-code-divi/
 
 windows:
-  - editor: nvim .
+  - editor: v .

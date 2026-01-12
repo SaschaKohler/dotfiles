@@ -7,7 +7,9 @@
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
+export UV_GLOBAL_PYTHON_REQUEST="3.12"
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/saschakohler/.oh-my-zsh"
 
@@ -93,7 +95,6 @@ alias kdf='kubectl delete -f'
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias zt='cd /Users/saschakohler/garden/zet/'
 alias zshconfig="v ~/.zshrc"
 alias k='kubectl'
 alias tui='taskwarrior-tui'
@@ -102,9 +103,8 @@ export EDITOR='nvim'
 
 #
 export KUBE_EDITOR="nvim"
-export SECOND_BRAIN="$HOME/Documents/01_Development/Active_Projects/garden"
 
-export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+# export PATH="$(brew --prefix python)/libexec/bin:$PATH"
 # ezample aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

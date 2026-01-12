@@ -236,17 +236,49 @@ return {
 
   {
     "saghen/blink.cmp",
+    dependencies = {
+      "codeium.nvim",
+      "saghen/blink.compat",
+      "rafamadriz/friendly-snippets",
+    },
     opts = {
-      completion = {
-        menu = {
-          winblend = vim.o.pumblend,
+      -- AI-powered completions
+      sources = {
+        compat = { "codeium" },
+        default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          codeium = {
+            kind = "Codeium",
+            score_offset = 100, -- Prioritize AI suggestions
+            async = true,
+          },
         },
       },
-      signature = {
-        window = {
-          winblend = vim.o.pumblend,
-        },
+
+      keymap = {
+        preset = "enter",
+        ["<C-y>"] = { "select_and_accept" }, -- Accept with Ctrl+y
+      },
+
+      appearance = {
+        nerd_font_variant = "mono",
       },
     },
   },
+
+  -- {
+  --   "saghen/blink.cmp",
+  --   opts = {
+  --     completion = {
+  --       menu = {
+  --         winblend = vim.o.pumblend,
+  --       },
+  --     },
+  --     signature = {
+  --       window = {
+  --         winblend = vim.o.pumblend,
+  --       },
+  --     },
+  --   },
+  -- },
 }

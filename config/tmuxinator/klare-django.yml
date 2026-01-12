@@ -1,0 +1,7 @@
+# /Users/saschakohler/.config/tmuxinator/klare-django.yml
+
+name: klare-django
+root: /Users/saschakohler/klare-methode
+
+windows:
+  - editor: v .

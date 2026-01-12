@@ -1,103 +1,122 @@
-# Sascha's Brewfile - Stateless Workstation
-# Install: brew bundle install --file=Brewfile
-
-# Taps
-tap "koekeishiya/formulae"
-tap "supabase/tap"
+tap "adoptopenjdk/openjdk"
+tap "armmbed/formulae"
 tap "ddev/ddev"
-
-# ===========================================
-# CORE TOOLS
-# ===========================================
-
-# Editors
-brew "neovim"
-brew "vim"
-
-# Terminal
-brew "tmux"
-brew "tmuxinator"
-brew "fish"
-
-# Git
-brew "git"
-brew "lazygit"
-brew "hub"
-brew "tig"
-
-# ===========================================
-# KUBERNETES & DEVOPS
-# ===========================================
-brew "kubernetes-cli"
-brew "k9s"
-# brew "helm"  # uncomment if needed
-
-# ===========================================
-# DEVELOPMENT
-# ===========================================
-
-# Node.js
-brew "node@20"
-brew "yarn"
-
-# Python
-brew "python@3.12"
-brew "pipx"
-
-# PHP
+tap "facebook/fb"
+tap "heroku/brew"
+tap "koekeishiya/formulae"
+tap "mobile-dev-inc/tap"
+tap "stripe/stripe-cli"
+tap "supabase/tap"
+brew "age"
+brew "libtiff"
+brew "jpeg-xl"
+brew "aom"
+brew "bat"
+brew "berkeley-db", link: true
+brew "boost"
+brew "glib"
+brew "cairo"
+brew "p11-kit"
+brew "unbound"
+brew "gnutls"
+brew "emacs"
+brew "cask"
+brew "cmake"
+brew "cocoapods"
+brew "commitizen"
+brew "freetds"
+brew "libavif"
+brew "gd"
+brew "libzip"
 brew "php"
 brew "composer"
-
-# Mobile Dev
-brew "cocoapods"
-brew "fastlane"
-brew "ios-deploy"
-brew "watchman"
-
-# ===========================================
-# CLI UTILITIES
-# ===========================================
-brew "fzf"
-brew "ripgrep"
-brew "fd"
-brew "eza"
-brew "bat"
-brew "zoxide"
-brew "the_silver_searcher"
-brew "tree"
-brew "wget"
 brew "ctags"
-brew "peco"
+brew "docker-compose", link: false
+brew "folly"
+brew "fizz"
+brew "wangle"
+brew "fbthrift"
+brew "fb303"
+brew "edencommon"
+brew "eza"
+brew "fastlane"
+brew "fd"
+brew "figlet"
+brew "fish"
+brew "fzf"
+brew "gdb"
+brew "gdk-pixbuf"
+brew "gh"
+brew "git"
+brew "glew"
+brew "glfw"
+brew "glm"
 brew "gnu-sed"
-brew "jq"  # JSON processor
-
-# ===========================================
-# MISC
-# ===========================================
-brew "imagemagick"
+brew "harfbuzz"
+brew "hub"
 brew "hugo"
-brew "pandoc"
-brew "mkcert"
-brew "nmap"
+brew "imagemagick"
+brew "ios-deploy"
+brew "jsoncpp"
+brew "k9s"
+brew "kubernetes-cli"
+brew "kubeseal"
+brew "lazygit"
+brew "libfido2"
+brew "pango"
+brew "librsvg"
+brew "lsusb"
 brew "midnight-commander"
-
-# Window Manager (optional)
-brew "koekeishiya/formulae/yabai"
-brew "koekeishiya/formulae/skhd"
-
-# Supabase CLI
-brew "supabase/tap/supabase"
-
-# DDEV for local WordPress/PHP
+brew "minicom"
+brew "minikube"
+brew "mkcert"
+brew "mvfst"
+brew "mysql"
+brew "neovim"
+brew "nmap"
+brew "node@20"
+brew "numpy"
+brew "open-ocd"
+brew "pandoc"
+brew "peco"
+brew "perl"
+brew "pipx"
+brew "postgresql@14"
+brew "pure"
+brew "qemu"
+brew "qpdf"
+brew "ripgrep"
+brew "sops"
+brew "spectra"
+brew "syncthing", restart_service: :changed
+brew "taskwarrior-tui"
+brew "the_silver_searcher"
+brew "tig"
+brew "tmux"
+brew "tmuxinator"
+brew "tree"
+brew "vim"
+brew "watchman"
+brew "wget"
+brew "yarn"
+brew "yazi"
+brew "zoxide"
+brew "armmbed/formulae/arm-none-eabi-gcc"
 brew "ddev/ddev/ddev"
-
-# ===========================================
-# CASKS (GUI Apps)
-# ===========================================
+brew "facebook/fb/idb-companion"
+brew "heroku/brew/heroku"
+brew "koekeishiya/formulae/skhd"
+brew "koekeishiya/formulae/yabai"
+brew "mobile-dev-inc/tap/maestro"
+brew "stripe/stripe-cli/stripe"
+brew "supabase/tap/supabase"
+cask "basictex"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "forklift"
-
-# Java for Android Dev
+cask "malwarebytes"
+cask "zulu"
 cask "zulu@17"
+cargo "cargo-generate"
+cargo "rust-analyzer"

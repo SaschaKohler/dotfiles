@@ -1,7 +1,7 @@
 # /Users/saschakohler/.config/tmuxinator/breading.yml
 
 name: breading
-root: ~/Users/saschakohler/Documents/01_Development/Active_Projects/breading/
+root: ~/Users/saschakohler/Documents/01_Development/Active_Projects/_not_versioned_/breading/
 
 windows:
   - editor: nvim .
